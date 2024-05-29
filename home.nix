@@ -82,6 +82,7 @@
     pamixer
     pavucontrol
     signal-desktop
+    lazygit
     armcord
   ];
 

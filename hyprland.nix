@@ -10,10 +10,32 @@ in {
   programs.waybar.enable = true;
 
   gtk.enable = true;
-  gtk.theme.package = pkgs.adw-gtk3;
-  gtk.theme.name = "adw-gtk3";
-  gtk.cursorTheme.package = pkgs.bibata-cursors;
-  gtk.cursorTheme.name = "Bibata-Modern-Ice";
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3";
+    };
+
+    iconTheme = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+    };
+
+    font = {
+      name = "Rubik";
+      size = 14;
+    };
+  };
 
   home.packages = with pkgs; [bibata-cursors];
   wayland.windowManager.hyprland = {
@@ -144,6 +166,7 @@ in {
           ",XF86AudioMute, exec, ${pkgs.pw-volume}/bin/pw-volume mute toggle"
           ",XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute"
           # other keys: XF86Display XF86WLAN XF86Tools XF86Bluetooth XF86Keyboard XF86Favorites
+          ", Print, exec, ${pkgs.grimblast}/bin/grimblast copy area"
         ]
         ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString (
           if n == 0
