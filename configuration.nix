@@ -68,13 +68,6 @@
     LC_TELEPHONE = "pl_PL.UTF-8";
     LC_TIME = "pl_PL.UTF-8";
   };
-  services.xserver = {
-    layout = "pl";
-  };
-  console = {
-    keyMap = "pl";
-    useXkbConfig = true; # use xkb.options in tty.
-  };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;

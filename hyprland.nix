@@ -3,8 +3,9 @@
   pkgs,
   ...
 }: let
-  startScript = pkgs.writeShellScriptBin "start" ''
-  '';
+  startScript =
+    pkgs.writeShellScriptBin "start" ''
+    '';
 in {
   programs.waybar.enable = true;
 
@@ -26,6 +27,7 @@ in {
         monitor = ",preferred,auto,1";
       };
       input = {
+        kb_layout = "pl";
         touchpad = {
           natural_scroll = true;
           disable_while_typing = true;
@@ -95,7 +97,7 @@ in {
       exec-once = [
         "nm-applet"
         "waybar"
-	"mako"
+        "mako"
         # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
       "$browser" = "firefox";
