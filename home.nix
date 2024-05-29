@@ -14,6 +14,7 @@
     ./rnnoise.nix
     ./bitwarden.nix
     ./mako.nix
+    ./bottom.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
