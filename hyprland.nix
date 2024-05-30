@@ -30,7 +30,7 @@ in {
     };
 
     font = {
-      # name = "Rubik";
+      name = "Lato";
       size = 12;
     };
   };
