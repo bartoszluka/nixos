@@ -143,10 +143,22 @@
       bind -M insert \cf forward-char
       bind -M insert \cy forward-char
     '';
-    plugins = [
+    plugins = with pkgs.fishPlugins; [
       {
         name = "grc";
-        src = pkgs.fishPlugins.grc.src;
+        src = grc.src;
+      }
+      {
+        name = "hydro";
+        src = hydro.src;
+      }
+      {
+        name = "puffer";
+        src = puffer.src;
+      }
+      {
+        name = "plugin-git";
+        src = plugin-git.src;
       }
     ];
     shellAliases = {
@@ -159,7 +171,10 @@
         position = "anywhere";
         expansion = "--help | bat --language help";
       };
+      kl = "killall";
+      lg = "lazygit";
       chx = "chmod +x";
+      r = "nh os switch";
     };
   };
 
