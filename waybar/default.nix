@@ -7,7 +7,7 @@
     format = "{icon}";
     format-icons = {
       "1" = "";
-      "2" = "";
+      "2" = "";
       "3" = "";
       "4" = "";
       "10" = "󰕮";
@@ -33,7 +33,11 @@
     gtk-layer-shell = true;
     height = 20;
 
-    modules-left = ["custom/logo" "hyprland/workspaces" "hyprland/window"];
+    modules-left = [
+      # "custom/logo"
+      "hyprland/workspaces"
+      "hyprland/window"
+    ];
     modules-center = ["clock"];
     modules-right = [
       # "hyprland/language"
