@@ -37,14 +37,10 @@
     modules-center = ["clock"];
     modules-right = [
       # "hyprland/language"
-      "bluetooth"
-      "pulseaudio"
-      "pulseaudio#microphone"
       "backlight"
       "battery"
-      "cpu"
-      "memory"
-      "network"
+      "pulseaudio"
+      "pulseaudio#microphone"
       "tray"
     ];
 
