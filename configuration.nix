@@ -147,14 +147,16 @@
   users.users.bartek = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "input" "video"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ ];
+    packages = with pkgs; [
+      nvim-pkg # my custom neovim flake
+    ];
     shell = pkgs.fish;
   };
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    unstable.neovim
+    # unstable.neovim
     fd
     rm-improved
     ripgrep

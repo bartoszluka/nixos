@@ -25,8 +25,7 @@
     comma.url = "github:nix-community/comma";
     comma.inputs.nixpkgs.follows = "unstable";
     # Neovim
-    # neovim.url = "github:jakehamilton/neovim";
-    # neovim.inputs.nixpkgs.follows = "unstable";
+    nvim-nix.url = "path:/home/bartek/nvim.nix";
 
     bibata-cursors = {
       url = "github:suchipi/Bibata_Cursor";
@@ -69,6 +68,13 @@
     nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs unstable;};
       modules = [
+        {
+          nixpkgs = {
+            overlays = [
+              inputs.nvim-nix.overlays.default
+            ];
+          };
+        }
         nixos-hardware.nixosModules.lenovo-thinkpad-t470s
         ./configuration.nix
         inputs.nix-ld.nixosModules.nix-ld
