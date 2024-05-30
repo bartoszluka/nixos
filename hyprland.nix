@@ -12,10 +12,8 @@ in {
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
-    # package = pkgs.bibata-cursors;
-    # name = "Bibata-Modern-Ice";
-    package = pkgs.nordzy-cursor-theme;
-    name = "Nordzy-cursors-white";
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
     size = 32;
   };
 
@@ -135,7 +133,7 @@ in {
         "mako"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
-        "${pkgs.swaybg}/bin/swaybg --mode fill --input /home/bartek/nord-wallpapers/nord-forest.jpg"
+        "${pkgs.swaybg}/bin/swaybg --mode fill --image wallpaper.jpg"
         # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
       "$browser" = "firefox";
@@ -199,7 +197,7 @@ in {
         size = toString config.home.pointerCursor.size;
       in [
         "XCURSOR_SIZE,${size}"
-        "HYPRCURSOR_SIZE,${size}32"
+        "HYPRCURSOR_SIZE,${size}"
       ];
 
       windowrulev2 = let
