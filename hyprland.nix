@@ -48,12 +48,13 @@
       general = {
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 2;
+        border_size = 4;
         layout = "master";
         monitor = ",preferred,auto,1";
 
-        "col.active_border" = "rgba(${config.colorScheme.colors.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
-        "col.inactive_border" = "rgba(${config.colorScheme.colors.base00}ff)";
+        # "col.active_border" = "rgba(${config.colorScheme.colors.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
+        "col.active_border" = "rgb(${config.colorScheme.colors.base0C})";
+        "col.inactive_border" = "rgb(${config.colorScheme.colors.base00})";
       };
       input = {
         kb_layout = "pl";
