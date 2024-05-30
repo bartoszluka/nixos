@@ -135,6 +135,7 @@ in {
         "mako"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
+        "${pkgs.swaybg}/bin/swaybg --mode fill --input ~/nord-wallpapers/nord-forest.jpg"
         # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
       "$browser" = "firefox";
