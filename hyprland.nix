@@ -16,7 +16,7 @@ in {
     # name = "Bibata-Modern-Ice";
     package = pkgs.nordzy-cursor-theme;
     name = "Nordzy-cursors-white";
-    size = 24;
+    size = 32;
   };
 
   gtk = let
@@ -47,7 +47,7 @@ in {
     gtk4.extraConfig = extraConfig;
   };
 
-  home.packages = with pkgs; [bibata-cursors];
+  home.packages = with pkgs; [swaybg];
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -135,7 +135,7 @@ in {
         "mako"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
-        "${pkgs.swaybg}/bin/swaybg --mode fill --input ~/nord-wallpapers/nord-forest.jpg"
+        "${pkgs.swaybg}/bin/swaybg --mode fill --input /home/bartek/nord-wallpapers/nord-forest.jpg"
         # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
       "$browser" = "firefox";
@@ -195,12 +195,16 @@ in {
           else n
         )}") [1 2 3 4 5 6 7 8 9 0];
 
-      env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
+      env = let
+        size = toString config.home.pointerCursor.size;
+      in [
+        "XCURSOR_SIZE,${size}"
+        "HYPRCURSOR_SIZE,${size}32"
       ];
 
-      windowrulev2 =let opacity = "0.88" ;in[
+      windowrulev2 = let
+        opacity = "0.88";
+      in [
         "suppressevent maximize, class:.*" # You'll probably like this.
         # "opacity ${opacity} override ${opacity} override ${opacity} override,^(foot)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for foot
         # "opacity ${opacity} override ${opacity} override ${opacity} override,^(kitty)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for kitty
