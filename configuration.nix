@@ -2,8 +2,6 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  config,
-  lib,
   pkgs,
   inputs,
   unstable,
@@ -15,6 +13,10 @@
     inputs.home-manager.nixosModules.default
     ./kanata.nix
   ];
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
   programs.hyprland.enable = true;
   services.greetd = {
     enable = true;
@@ -25,9 +27,10 @@
       };
     };
   };
+  security.polkit.enable = true;
   services.fprintd.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   programs.nh = {
     enable = true;
@@ -144,13 +147,10 @@
   users.users.bartek = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "input" "video"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-    ];
+    packages = with pkgs; [ ];
     shell = pkgs.fish;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -163,13 +163,13 @@
     kitty
     foot
     firefox
-    vivaldi
     git
     du-dust
     imagemagick
     killall
     libnotify # for notify-send
     tre-command
+    kdePackages.polkit-qt-1
   ];
   programs.fish.enable = true;
 
