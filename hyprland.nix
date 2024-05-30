@@ -75,6 +75,7 @@ in {
         hide_on_touch = true;
       };
       misc = {
+        disable_hyprland_logo = true;
         enable_swallow = true;
         vfr = true; # it’ll lower the amount of sent frames when nothing is happening on-screen.
       };
@@ -133,7 +134,7 @@ in {
         "mako"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
-        "${pkgs.swaybg}/bin/swaybg --mode fill --image wallpaper.jpg"
+        "swaybg --mode fill --image wallpaper.jpg"
         # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
       "$browser" = "firefox";
