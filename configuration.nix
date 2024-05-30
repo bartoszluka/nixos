@@ -83,7 +83,7 @@
     rubik
     lato
     font-awesome
-    corefonts
+    # corefonts
   ];
 
   fonts.enableDefaultPackages = true;
