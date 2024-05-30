@@ -15,7 +15,7 @@ in {
     # package = pkgs.bibata-cursors;
     # name = "Bibata-Modern-Ice";
     package = pkgs.nordzy-cursor-theme;
-    name = "Nordzy-white";
+    name = "Nordzy-cursors-white";
     size = 24;
   };
 
@@ -199,10 +199,11 @@ in {
         "HYPRCURSOR_SIZE,24"
       ];
 
-      windowrulev2 = [
+      windowrulev2 =let opacity = "0.88" ;in[
         "suppressevent maximize, class:.*" # You'll probably like this.
-        "opacity 0.8 0.8,class:^(foot)$"
-        "opacity 0.8 0.8,class:^(kitty)$"
+        # "opacity ${opacity} override ${opacity} override ${opacity} override,^(foot)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for foot
+        # "opacity ${opacity} override ${opacity} override ${opacity} override,^(kitty)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for kitty
+        "opacity ${opacity} override ${opacity} override ${opacity} override, class:.*" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for kitty
       ];
     };
   };
