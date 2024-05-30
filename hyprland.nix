@@ -12,27 +12,39 @@ in {
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 16;
+    # package = pkgs.bibata-cursors;
+    # name = "Bibata-Modern-Ice";
+    package = pkgs.nordzy-cursor-theme;
+    name = "Nordzy-white";
+    size = 24;
   };
 
-  gtk = {
+  gtk = let
+    extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+  in {
     enable = true;
     theme = {
-      package = pkgs.adw-gtk3;
-      name = "adw-gtk3";
+      package = pkgs.nordic;
+      name = "Nordic";
     };
 
     iconTheme = {
-      package = pkgs.gnome.adwaita-icon-theme;
-      name = "Adwaita";
+      package = pkgs.nordzy-icon-theme;
+      name = "Nordzy";
     };
 
     font = {
       name = "Lato";
-      size = 12;
+      package = pkgs.lato;
+      size = 15;
     };
+    gtk2.extraConfig = ''
+      gtk-application-prefer-dark-theme = 1;
+    '';
+    gtk3.extraConfig = extraConfig;
+    gtk4.extraConfig = extraConfig;
   };
 
   home.packages = with pkgs; [bibata-cursors];
@@ -66,6 +78,7 @@ in {
       };
       misc = {
         enable_swallow = true;
+        vfr = true; # it’ll lower the amount of sent frames when nothing is happening on-screen.
       };
       decoration = {
         rounding = 10;
@@ -76,6 +89,7 @@ in {
           passes = 1;
           xray = true; # if enabled, floating windows will ignore tiled windows in their blur. Only available if blur_new_optimizations is true. Will reduce overhead on floating blur significantly.
         };
+        drop_shadow = false;
       };
       animations = {
         enabled = true;
@@ -108,6 +122,8 @@ in {
       # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
       master = {
         new_is_master = true;
+        new_on_top = true;
+        no_gaps_when_only = 2; # (default: disabled - 0) no border - 1, with border - 2 [0/1/2]
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#gestures
@@ -118,6 +134,8 @@ in {
         "nm-applet"
         "waybar"
         "mako"
+        "[workspace 10 silent] foot -e btm"
+        "[workspace 2 silent] $browser"
         # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
       "$browser" = "firefox";
