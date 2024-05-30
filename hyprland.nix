@@ -132,9 +132,9 @@ in {
         "nm-applet"
         "waybar"
         "mako"
+        "sleep 2; ${pkgs.swaybg}/bin/swaybg --mode fill --image ${./wallpaper.jpg}"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
-        "swaybg --mode fill --image wallpaper.jpg"
         # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
       "$browser" = "firefox";
