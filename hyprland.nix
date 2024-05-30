@@ -111,7 +111,7 @@ in {
 
       "$mainMod" = "SUPER";
       "$terminal" = "foot";
-      "$menu" = "wofi --show drun";
+      "$menu" = "${pkgs.wofi}/bin/wofi --show drun";
 
       # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
       dwindle = {
@@ -123,7 +123,6 @@ in {
       master = {
         new_is_master = true;
         new_on_top = true;
-        no_gaps_when_only = 2; # (default: disabled - 0) no border - 1, with border - 2 [0/1/2]
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#gestures
@@ -202,6 +201,8 @@ in {
 
       windowrulev2 = [
         "suppressevent maximize, class:.*" # You'll probably like this.
+        "opacity 0.8 0.8,class:^(foot)$"
+        "opacity 0.8 0.8,class:^(kitty)$"
       ];
     };
   };
