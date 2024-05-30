@@ -2,11 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  startScript =
-    pkgs.writeShellScriptBin "start" ''
-    '';
-in {
+}: {
   programs.waybar.enable = true;
 
   home.pointerCursor = {
@@ -14,7 +10,7 @@ in {
     # x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
-    size = 32;
+    size = 24;
   };
 
   gtk = let
@@ -55,6 +51,9 @@ in {
         border_size = 2;
         layout = "master";
         monitor = ",preferred,auto,1";
+
+        "col.active_border" = "rgba(${config.colorScheme.colors.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
+        "col.inactive_border" = "rgba(${config.colorScheme.colors.base00}ff)";
       };
       input = {
         kb_layout = "pl";
