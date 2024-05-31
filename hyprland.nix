@@ -205,9 +205,9 @@
         opacity = "0.88";
       in [
         "suppressevent maximize, class:.*" # You'll probably like this.
-        # "opacity ${opacity} override ${opacity} override ${opacity} override,^(foot)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for foot
-        # "opacity ${opacity} override ${opacity} override ${opacity} override,^(kitty)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for kitty
-        "opacity ${opacity} override ${opacity} override ${opacity} override, class:.*" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for kitty
+        "opacity ${opacity} override ${opacity} override 1.0 override, class:.*" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for all programs
+        "opacity ${opacity} override ${opacity} override ${opacity} override, class:^(foot)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for foot
+        "opacity ${opacity} override ${opacity} override ${opacity} override, class:^(kitty)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for kitty
       ];
     };
   };
