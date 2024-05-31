@@ -160,6 +160,10 @@
         name = "plugin-git";
         src = plugin-git.src;
       }
+      {
+        name = "done";
+        src = done.src;
+      }
     ];
     shellAliases = {
       ls = "eza";
