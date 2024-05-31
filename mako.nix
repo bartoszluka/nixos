@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{config, ...}: let
   colors = config.colorScheme.colors;
 in {
   services.mako = {
@@ -15,6 +11,7 @@ in {
     defaultTimeout = 3000;
     progressColor = "over #${colors.base02}";
     layer = "overlay";
+    font = "sans 16";
 
     extraConfig = ''
       [urgency=high]
