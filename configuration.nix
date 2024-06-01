@@ -4,6 +4,7 @@
 {
   pkgs,
   inputs,
+  lib,
   unstable,
   ...
 }: {
@@ -29,6 +30,7 @@
   };
   security.polkit.enable = true;
   services.fprintd.enable = true;
+  services.fprintd.tod.enable = true;
 
   # nixpkgs.config.allowUnfree = true;
 
@@ -173,6 +175,11 @@
     tre-command
     kdePackages.polkit-qt-1
   ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      # Add additional package names here
+      "vivaldi"
+    ];
   programs.fish.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are

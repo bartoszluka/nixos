@@ -52,9 +52,9 @@
         layout = "master";
         monitor = ",preferred,auto,1";
 
-        # "col.active_border" = "rgba(${config.colorScheme.colors.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
-        "col.active_border" = "rgb(${config.colorScheme.colors.base0C})";
-        "col.inactive_border" = "rgb(${config.colorScheme.colors.base00})";
+        # "col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
+        "col.active_border" = "rgb(${config.colorScheme.palette.base0C})";
+        "col.inactive_border" = "rgb(${config.colorScheme.palette.base00})";
       };
       input = {
         kb_layout = "pl";
@@ -137,7 +137,7 @@
         "[workspace 2 silent] $browser"
         # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
-      "$browser" = "firefox";
+      "$browser" = "vivaldi";
       bind = let
         brightness = x: let
           direction =
