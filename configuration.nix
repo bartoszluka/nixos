@@ -172,6 +172,7 @@
     kitty
     foot
     firefox
+    vivaldi # this is from unfree
     git
     du-dust
     imagemagick
