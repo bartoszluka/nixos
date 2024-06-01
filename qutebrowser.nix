@@ -9,6 +9,17 @@
       n = "https://search.nixos.org/packages?channel=unstable&type=packages&query={}";
     };
     settings = with config.colorScheme.palette; {
+      tabs.position = "left";
+      auto_save.session = true;
+      editor.encoding = "utf-8";
+      fonts.default_family = "FiraCode Nerd Font Mono";
+      fonts.default_size = "14pt";
+      scrolling.smooth = true;
+      tabs.title.format = "{audio}{index}: {current_title}";
+      url.auto_search = "schemeless";
+      url.default_page = "https://searx.jaimo.fun/search";
+      url.start_pages = "https://searx.jaimo.fun/";
+      zoom.default = "125%";
       colors = {
         ## Background color of the completion widget category headers.
         ## Type: QssColor
@@ -158,7 +169,7 @@
 
         # ## Border used around UI elements in prompts.
         # ## Type: String
-        c.colors.prompts.border = "1px solid #${base00}";
+        prompts.border = "1px solid #${base00}";
 
         ## Foreground color for prompts.
         ## Type: QssColor
@@ -280,11 +291,11 @@
 
         ## Color gradient start for the tab indicator.
         ## Type: QtColor
-        # c.colors.tabs.indicator.start = nord['violet']
+        # tabs.indicator.start = nord['violet']
 
         ## Color gradient end for the tab indicator.
         ## Type: QtColor
-        # c.colors.tabs.indicator.stop = nord['orange']
+        # tabs.indicator.stop = nord['orange']
 
         ## Color gradient interpolation system for the tab indicator.
         ## Type: ColorSystem
@@ -293,7 +304,7 @@
         ##   - hsv: Interpolate in the HSV color system.
         ##   - hsl: Interpolate in the HSL color system.
         ##   - none: Don't show a gradient.
-        ctabs.indicator.system = "none";
+        tabs.indicator.system = "none";
 
         ## Background color of unselected odd tabs.
         ## Type: QtColor
@@ -324,6 +335,6 @@
     ## Background color for webpages if unset (or empty to use the theme's
     ## color)
     ## Type: QtColor
-    # c.colors.webpage.bg = 'white' };
+    # webpage.bg = 'white' };
   };
 }
