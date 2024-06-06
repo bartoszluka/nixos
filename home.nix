@@ -7,6 +7,7 @@
     inputs.nix-colors.homeManagerModules.default
     ./hyprland.nix
     ./waybar
+    ./fish.nix
     ./foot.nix
     ./firefox.nix
     ./wofi

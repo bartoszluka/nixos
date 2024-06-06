@@ -1,14 +1,11 @@
 {
   pkgs,
   inputs,
-  config,
-  lib,
   ...
 }: {
   programs.firefox = {
     enable = true;
-    # package = pkgs.firefox.override {
-    # };
+    package = pkgs.firefox-devedition;
     nativeMessagingHosts = [
       # Gnome shell native connector
       pkgs.gnome-browser-connector
@@ -20,7 +17,6 @@
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
         bitwarden
         ublock-origin
-        sponsorblock
         darkreader
         vimium
       ];
