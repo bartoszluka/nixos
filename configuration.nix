@@ -201,6 +201,16 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = ["spliit"];
+    ensureUsers = [
+      {
+        name = "spliit";
+        ensureDBOwnership = true;
+      }
+    ];
+  };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
