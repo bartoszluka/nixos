@@ -203,13 +203,30 @@
 
   services.postgresql = {
     enable = true;
+    enableTCPIP = true;
     ensureDatabases = ["spliit"];
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+
+      #type database  DBuser  origin-address  auth-method
+      host  all       all     localhost       trust
+    '';
+    identMap = ''
+      # ArbitraryMapName    systemUser   DBUser
+      superuser_map         root         postgres
+      superuser_map         bartek       postgres
+
+      # Let other names login as themselves
+      superuser_map         /^(.*)$      \1
+    '';
     ensureUsers = [
       {
         name = "spliit";
         ensureDBOwnership = true;
       }
     ];
+    settings.port = 5432;
   };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
