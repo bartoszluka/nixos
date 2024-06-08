@@ -169,7 +169,10 @@
     fd
     rm-improved
     ripgrep
+    sd
+    xh
     alejandra
+    stylua
     bat
     kitty
     foot
@@ -182,6 +185,8 @@
     libnotify # for notify-send
     tre-command
     kdePackages.polkit-qt-1
+
+    sxiv
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
