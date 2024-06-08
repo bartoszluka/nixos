@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{config, ...}: {
   programs.foot = {
     enable = true;
     settings = {
@@ -17,34 +17,37 @@
       cursor = {
         style = "beam";
         blink = "no";
+        unfocused-style = "hollow";
         # color = "inverse";
       };
-
-      colors = {
-        # Nord
-        foreground = "D8DEE9";
-        background = "2E3440";
-
-        regular0 = "2E3440";
-        regular1 = "BF616A";
-        regular2 = "A3BE8C";
-        regular3 = "EBCB8B";
-        regular4 = "81A1C1";
-        regular5 = "B48EAD";
-        regular6 = "88C0D0";
-        regular7 = "E5E9F0";
-
-        bright0 = "4C566A";
-        bright1 = "BF616A";
-        bright2 = "A3BE8C";
-        bright3 = "EBCB8B";
-        bright4 = "8FBCBB";
-        bright5 = "B48EAD";
-        bright6 = "8FBCBB";
-        bright7 = "ECEFF4";
+      key-bindings = {
+        spawn-terminal = "Mod4+n";
       };
 
-      csd. size = 0;
+      colors = with config.colorScheme.palette; {
+        foreground = base04;
+        background = base00;
+
+        regular0 = base00;
+        regular1 = base08;
+        regular2 = base0B;
+        regular3 = base0A;
+        regular4 = base0D;
+        regular5 = base0E;
+        regular6 = base0C;
+        regular7 = base05;
+
+        bright0 = base03;
+        bright1 = base08;
+        bright2 = base0B;
+        bright3 = base0A;
+        bright4 = base07;
+        bright5 = base0E;
+        bright6 = base07;
+        bright7 = base06;
+      };
+
+      csd.size = 0;
     };
   };
 }

@@ -190,9 +190,7 @@
     sxiv
     zip
     unzip
-    peazip
     gzip
-    tar
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [

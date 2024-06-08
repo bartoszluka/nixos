@@ -132,6 +132,7 @@
         "nm-applet"
         "waybar"
         "mako"
+        "foot --server"
         "sleep 2; ${pkgs.swaybg}/bin/swaybg --mode fill --image ${./wallpapers/polar-bear.jpg}"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
@@ -150,7 +151,7 @@
       in
         [
           "$mainMod, F, fullscreen"
-          "$mainMod, return, exec, $terminal"
+          "$mainMod, return, exec, footclient"
           "$mainMod, W, exec, $browser"
 
           "$mainMod, Q, killactive,"
