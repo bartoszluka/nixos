@@ -186,7 +186,13 @@
     tre-command
     kdePackages.polkit-qt-1
 
+    yazi
     sxiv
+    zip
+    unzip
+    peazip
+    gzip
+    tar
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [

@@ -132,12 +132,12 @@
         "nm-applet"
         "waybar"
         "mako"
-        "sleep 2; ${pkgs.swaybg}/bin/swaybg --mode fill --image ${./wallpaper.jpg}"
+        "sleep 2; ${pkgs.swaybg}/bin/swaybg --mode fill --image ${./wallpapers/polar-bear.jpg}"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
         # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
-      "$browser" = "vivaldi";
+      "$browser" = "firefox";
       bind = let
         brightness = x: let
           direction =
