@@ -150,6 +150,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  nixpkgs.overlays = [inputs.nvim-nix.overlays.default];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.bartek = {
     isNormalUser = true;
@@ -186,6 +188,7 @@
       # Add additional package names here
       "vivaldi"
     ];
+
   programs.fish.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are

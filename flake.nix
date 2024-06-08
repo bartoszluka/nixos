@@ -21,9 +21,6 @@
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "unstable";
 
-    # Comma
-    comma.url = "github:nix-community/comma";
-    comma.inputs.nixpkgs.follows = "unstable";
     # Neovim
     nvim-nix.url = "path:/home/bartek/nvim.nix";
 
@@ -68,13 +65,6 @@
     nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs unstable;};
       modules = [
-        {
-          nixpkgs = {
-            overlays = [
-              inputs.nvim-nix.overlays.default
-            ];
-          };
-        }
         nixos-hardware.nixosModules.lenovo-thinkpad-t470s
         ./configuration.nix
         inputs.nix-ld.nixosModules.nix-ld
