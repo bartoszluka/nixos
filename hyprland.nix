@@ -194,6 +194,10 @@
           else n
         )}") [1 2 3 4 5 6 7 8 9 0];
 
+      bindm = [
+        "bindm=$mainMod,mouse:272,movewindow"
+        "bindm=$mainMod,mouse:273,resizewindow 2"
+      ];
       env = let
         size = toString config.home.pointerCursor.size;
       in [
