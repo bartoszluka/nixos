@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   programs.waybar.enable = true;
@@ -43,6 +44,7 @@
 
   home.packages = with pkgs; [swaybg];
   wayland.windowManager.hyprland = {
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
     settings = {
       general = {

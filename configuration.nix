@@ -7,7 +7,9 @@
   lib,
   unstable,
   ...
-}: {
+}: let
+  hyprland = inputs.hyprland.packages."${pkgs.system}".hyprland;
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -18,13 +20,12 @@
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
-  programs.hyprland.enable = true;
   services.greetd = {
     enable = true;
     package = pkgs.greetd.tuigreet;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --asterisks --cmd ${pkgs.hyprland}/bin/hyprland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --asterisks --cmd ${hyprland}/bin/hyprland";
       };
     };
   };
