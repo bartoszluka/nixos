@@ -4,7 +4,7 @@
   ...
 }: let
   workspaces = {
-    format = "{icon}";
+    format = "{name}: {icon}";
     format-icons = {
       "1" = "";
       "2" = "";
@@ -14,7 +14,6 @@
       # active = "";
       default = "";
     };
-    on-click = "activate";
     # persistent_workspaces = { "*" = 10; };
     window-rewrite = {
       "title<.*youtube.*>" = ""; # Windows whose titles contain "youtube"
