@@ -175,12 +175,15 @@
     libnotify # for notify-send
     tre-command
     kdePackages.polkit-qt-1
-
     yazi
-    sxiv
     zip
     unzip
     gzip
+    # image viewers
+    sxiv
+    vimiv-qt
+    swayimg
+    imv
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
