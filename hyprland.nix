@@ -53,7 +53,7 @@
         monitor = ",preferred,auto,1";
 
         # "col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
-        "col.active_border" = "rgb(${config.colorScheme.palette.base0C})";
+        "col.active_border" = "rgb(${config.colorScheme.palette.base0E})";
         "col.inactive_border" = "rgb(${config.colorScheme.palette.base00})";
       };
       input = {
