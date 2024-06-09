@@ -208,6 +208,12 @@
       };
     };
   };
+  services.wlsunset = {
+    enable = true;
+    latitude = 52.23;
+    longitude = 21.01;
+    temperature.night = 4500;
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

@@ -136,16 +136,6 @@
   xdg.portal.enable = true;
 
   hardware.brillo.enable = true;
-  location = {
-    provider = "manual";
-    latitude = 52.23;
-    longitude = 21.01;
-  };
-  services.redshift = {
-    enable = true;
-    temperature.night = 4500;
-    executable = "${pkgs.redshift}/bin/redshift-gtk";
-  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
