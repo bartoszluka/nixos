@@ -52,12 +52,9 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    inputs.ironbar = {
-      url = "github:JakeStanger/ironbar";
       inputs.nixpkgs.follows = "unstable";
     };
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = {
@@ -90,7 +87,6 @@
             users."bartek" = import ./home.nix;
           };
         }
-        inputs.ironbar.homeManagerModules.default
       ];
     };
   };

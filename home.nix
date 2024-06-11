@@ -16,7 +16,8 @@
     ./mako.nix
     ./bottom.nix
     ./qutebrowser.nix
-    ./ironbar
+    inputs.ags.homeManagerModules.default
+    ./ags
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
