@@ -16,6 +16,7 @@
     ./mako.nix
     ./bottom.nix
     ./qutebrowser.nix
+    ./ironbar
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
