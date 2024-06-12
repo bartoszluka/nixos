@@ -26,6 +26,7 @@ in {
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
   };
+  programs.dconf.enable = true; # fix for home manager error with gtk apps
   services.greetd = {
     enable = true;
     package = pkgs.greetd.tuigreet;
