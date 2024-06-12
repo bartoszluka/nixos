@@ -252,6 +252,8 @@
 
         // Enable CSD
         // user_pref("browser.tabs.drawInTitlebar", true);
+        user_pref("extensions.autoDisableScopes", 0);
+        user_pref("extensions.enabledScopes", 15);
       '';
 
       userChrome = ''
