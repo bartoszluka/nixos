@@ -192,6 +192,7 @@ in {
     vimiv-qt
     swayimg
     imv
+    inputs.feedback.packages.${system}.default
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [

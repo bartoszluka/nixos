@@ -55,6 +55,7 @@
       inputs.nixpkgs.follows = "unstable";
     };
     ags.url = "github:Aylur/ags";
+    feedback.url = "github:NorfairKing/feedback";
   };
 
   outputs = {
