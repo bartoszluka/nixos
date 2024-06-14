@@ -54,7 +54,7 @@
       OverridePostUpdatePage = "";
       PasswordManagerEnabled = false;
       PrimaryPassword = false;
-      SearchSuggestEnabled = false;
+      SearchSuggestEnabled = true;
       UserMessaging = {
         WhatsNew = false;
         ExtensionRecommendations = false;
@@ -102,11 +102,11 @@
           Status = "locked";
         };
         "browser.urlbar.suggest.history" = {
-          Value = false;
+          Value = true;
           Status = "locked";
         };
         "browser.urlbar.suggest.topsites" = {
-          Value = false;
+          Value = true;
           Status = "locked";
         };
         "dom.security.https_only_mode" = {
