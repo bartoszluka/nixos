@@ -676,8 +676,8 @@
         "wf-nvim": "wf-nvim"
       },
       "locked": {
-        "lastModified": 1718114901,
-        "narHash": "sha256-KZ55UBZeqCSfIt31FcnVhtSPIHBun7ce6jZxm9YakzM=",
+        "lastModified": 1718365290,
+        "narHash": "sha256-3w+9L4lEcZlHsCduVCsuqmXuOYscmQpmOlxI6FRl7m4=",
         "path": "/home/bartek/nvim.nix",
         "type": "path"
       },
