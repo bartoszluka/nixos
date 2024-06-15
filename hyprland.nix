@@ -132,6 +132,7 @@
       };
       exec-once = [
         "nm-applet"
+        "blueman-applet"
         "waybar"
         "mako"
         "foot --server"
