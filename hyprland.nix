@@ -1,9 +1,12 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   ...
-}: {
+}: let
+  projector = "Optoma Corporation Optoma 1080P Q72J6470784";
+in {
   programs.waybar.enable = true;
 
   home.pointerCursor = {
@@ -42,7 +45,7 @@
     gtk4.extraConfig = extraConfig;
   };
 
-  home.packages = with pkgs; [swaybg];
+  home.packages = with pkgs; [swaybg pulseaudio];
   wayland.windowManager.hyprland = {
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
@@ -52,7 +55,11 @@
         gaps_out = 10;
         border_size = 4;
         layout = "master";
-        monitor = ",preferred,auto,1";
+        monitor = [
+          "eDP-1, 1920x1080, 0x0, 1"
+          "desc:${projector}, preferred, auto-up, 1"
+          ",preferred, auto, 1"
+        ];
 
         # "col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
         "col.active_border" = "rgb(${config.colorScheme.palette.base0E})";
@@ -137,12 +144,23 @@
         "mako"
         "foot --server"
         "${pkgs.hyprdim}/bin/hyprdim"
-        "sleep 2; ${pkgs.swaybg}/bin/swaybg --mode fill --image ${./wallpapers/polar-bear.jpg}"
+        (let
+          connected = pkgs.writeShellScriptBin "connected.sh" ''
+            pactl set-card-profile alsa_card.pci-0000_00_1f.3 output:hdmi-stereo
+          '';
+          disconnected = pkgs.writeShellScriptBin "disconnected.sh" ''
+            pactl set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo
+          '';
+        in "${lib.getExe pkgs.hyprland-monitor-attached} ${lib.getExe connected} ${lib.getExe disconnected}")
+        "sleep 2; ${lib.getExe pkgs.swaybg} --mode fill --image ${./wallpapers/polar-bear.jpg}"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
-        # "${pkgs.bash}/bin/bash ${startScript}/bin/start"
       ];
       "$browser" = "firefox";
+      workspace = [
+        "name:external, monitor:desc:${projector}, default:true, persistent:true"
+        "r[1-10], monitor:eDP-1"
+      ];
       bind = let
         brightness = x: let
           direction =
@@ -187,6 +205,9 @@
           ",XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute"
           # other keys: XF86Display XF86WLAN XF86Tools XF86Bluetooth XF86Keyboard XF86Favorites
           ", Print, exec, ${pkgs.grimblast}/bin/grimblast copy area"
+
+          "$mainMod, e, workspace, external"
+          "$mainMod SHIFT, e, movetoworkspace, external"
         ]
         ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString (
           if n == 0
