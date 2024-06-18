@@ -136,6 +136,7 @@
         "waybar"
         "mako"
         "foot --server"
+        "${pkgs.hyprdim}/bin/hyprdim"
         "sleep 2; ${pkgs.swaybg}/bin/swaybg --mode fill --image ${./wallpapers/polar-bear.jpg}"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
