@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       main = {
-        font = "JetBrainsMono NF:size=9";
+        font = "JetBrainsMono NF:pixelsize=20";
         dpi-aware = "yes";
         selection-target = "both";
       };
