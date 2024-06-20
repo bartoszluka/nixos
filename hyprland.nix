@@ -146,6 +146,7 @@ in {
         "${pkgs.hyprdim}/bin/hyprdim"
         (let
           connected = pkgs.writeShellScriptBin "connected.sh" ''
+            hyprctl dispatch moveworkspacetomonitor name:external monitor:desc:${projector}
             pactl set-card-profile alsa_card.pci-0000_00_1f.3 output:hdmi-stereo
           '';
           disconnected = pkgs.writeShellScriptBin "disconnected.sh" ''
@@ -158,7 +159,7 @@ in {
       ];
       "$browser" = "firefox";
       workspace = [
-        "name:external, monitor:desc:${projector}, default:true, persistent:true"
+        "name:external, monitor:desc:${projector}, default:true"
         "r[1-10], monitor:eDP-1"
       ];
       bind = let
@@ -172,7 +173,7 @@ in {
         in "${pkgs.brillo}/bin/brillo -u 150000 -${direction} 2 -q";
       in
         [
-          "$mainMod, F, fullscreen"
+          "$mainMod, F, fullscreen, 2"
           "$mainMod, return, exec, footclient"
           "$mainMod, W, exec, $browser"
 
