@@ -119,7 +119,8 @@ in {
 
       "$mainMod" = "SUPER";
       "$terminal" = "foot";
-      "$menu" = "${pkgs.wofi}/bin/wofi --show drun";
+      # "$menu" = "${pkgs.wofi}/bin/wofi --show drun";
+      "$menu" = "${config.programs.tofi.package}/bin/tofi-drun --drun-launch=true";
 
       # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
       dwindle = {
@@ -143,7 +144,7 @@ in {
         "waybar"
         "mako"
         "foot --server"
-        "${pkgs.hyprdim}/bin/hyprdim"
+        "${lib.getExe pkgs.hyprdim}"
         (let
           connected = pkgs.writeShellScriptBin "connected.sh" ''
             hyprctl dispatch moveworkspacetomonitor name:external monitor:desc:${projector}

@@ -263,6 +263,31 @@
     #   }
     # '';
   };
+
+  programs.tofi = {
+    enable = true;
+    settings = with config.colorScheme.palette; {
+      # prompt-color = #f38ba8
+      selection-color = "#${base0C}";
+      background-color = "#${base01}A";
+
+      # background-color = "#000A";
+      border-width = 0;
+      font = "monospace";
+      height = "100%";
+      num-results = 5;
+      outline-width = 0;
+      padding-left = "35%";
+      padding-top = "35%";
+      result-spacing = 25;
+      width = "100%";
+
+      hide-cursor = true;
+      history = true;
+      matching-algorithm = "fuzzy";
+      terminal = "foot";
+    };
+  };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
