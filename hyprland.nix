@@ -182,6 +182,8 @@ in {
           "$mainMod, E, exec, $fileManager"
           "$mainMod, V, togglefloating,"
           "$mainMod, P, exec, $menu"
+
+          "$mainMod, X, exec, ${lib.getExe config.programs.wlogout.package} --show-binds"
           # "$mainMod, P, pseudo, # dwindle"
           # "$mainMod, J, togglesplit, # dwindle"
 

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
   imports = [
@@ -216,7 +217,52 @@
     longitude = 21.01;
     temperature.night = 4500;
   };
-
+  programs.wlogout = {
+    enable = true;
+    layout = [
+      {
+        label = "logout";
+        action = "loginctl terminate-user $USER";
+        text = "Logout";
+        keybind = "e";
+        circular = true;
+      }
+      {
+        label = "shutdown";
+        action = "systemctl poweroff";
+        text = "Shutdown";
+        keybind = "s";
+        circular = true;
+      }
+      {
+        label = "suspend";
+        action = "systemctl suspend";
+        text = "Suspend";
+        keybind = "u";
+        circular = true;
+      }
+      {
+        label = "reboot";
+        action = "systemctl reboot";
+        text = "Reboot";
+        keybind = "r";
+        circular = true;
+      }
+    ];
+    # style = with config.colorScheme.palette; ''
+    #   * {
+    #     background-image: none;
+    #     font-size: 24px;
+    #   }
+    #   window {
+    #     background: #${base00}F0;
+    #   }
+    #
+    #   button {
+    #     color: #${base0E};
+    #   }
+    # '';
+  };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
