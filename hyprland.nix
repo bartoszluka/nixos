@@ -183,7 +183,7 @@ in {
           "$mainMod, V, togglefloating,"
           "$mainMod, P, exec, $menu"
 
-          "$mainMod, X, exec, ${lib.getExe config.programs.wlogout.package} --show-binds"
+          "$mainMod, X, exec, ${lib.getExe config.programs.wlogout.package} --show-binds --buttons-per-row 2"
           # "$mainMod, P, pseudo, # dwindle"
           # "$mainMod, J, togglesplit, # dwindle"
 
