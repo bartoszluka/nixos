@@ -269,7 +269,7 @@
     settings = with config.colorScheme.palette; {
       # prompt-color = #f38ba8
       selection-color = "#${base0C}";
-      background-color = "#${base01}A";
+      background-color = "#${base01}C0";
 
       # background-color = "#000A";
       border-width = 0;
@@ -284,7 +284,8 @@
 
       hide-cursor = true;
       history = true;
-      matching-algorithm = "fuzzy";
+      fuzzy-match = true;
+      font-size = 24;
       terminal = "foot";
     };
   };
