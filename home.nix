@@ -19,6 +19,7 @@
     ./qutebrowser.nix
     inputs.ags.homeManagerModules.default
     ./ags
+    ./yazi.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -30,11 +31,19 @@
   qt.platformTheme = "gtk3";
   qt.style.name = "adwaita-dark";
 
+  programs.fd = {
+    enable = true;
+    ignores = [".git/" "node_modules/"];
+  };
   programs.git = {
     enable = true;
     userEmail = "bartoszluka1@gmail.com";
     userName = "bartek";
-    delta.enable = true;
+
+    delta = {
+      enable = true;
+      options.syntax-theme = "Nord";
+    };
     extraConfig = {
       init.defaultBranch = "main";
     };
