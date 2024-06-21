@@ -27,7 +27,7 @@
   colorScheme = inputs.nix-colors.colorSchemes.nord;
 
   qt.enable = true;
-  qt.platformTheme = "gtk";
+  qt.platformTheme = "gtk3";
   qt.style.name = "adwaita-dark";
 
   programs.git = {

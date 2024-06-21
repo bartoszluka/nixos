@@ -6,6 +6,17 @@
   ...
 }: let
   projector = "Optoma Corporation Optoma 1080P Q72J6470784";
+  hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
+  pactl = "${pkgs.pulseaudio}/bin/pactl";
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
+
+  brightness = direction: "${lib.getExe pkgs.brillo} -u 150000 -${direction} 2 -q";
+  brightness-up = brightness "A";
+  brightness-down = brightness "U";
+  if-zero-than-10 = n:
+    if n == 0
+    then 10
+    else n;
 in {
   programs.waybar.enable = true;
 
@@ -19,7 +30,7 @@ in {
 
   gtk = let
     extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      gtk-application-prefer-dark-theme = true;
     };
   in {
     enable = true;
@@ -44,8 +55,30 @@ in {
     gtk3.extraConfig = extraConfig;
     gtk4.extraConfig = extraConfig;
   };
+  xdg.configFile = let
+    gtkTheme = config.gtk.theme;
+  in {
+    "gtk-4.0/assets".source = "${gtkTheme.package}/share/themes/${gtkTheme.name}/gtk-4.0/assets";
+    "gtk-4.0/gtk.css".source = "${gtkTheme.package}/share/themes/${gtkTheme.name}/gtk-4.0/gtk.css";
+    "gtk-4.0/gtk-dark.css".source = "${gtkTheme.package}/share/themes/${gtkTheme.name}/gtk-4.0/gtk-dark.css";
+  };
 
-  home.packages = with pkgs; [swaybg pulseaudio];
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = ":appmenu";
+    };
+    "org/gtk/settings/file-chooser" = {
+      sort-directories-first = true;
+    };
+    "org/gtk/gtk4/settings/file-chooser" = {
+      sort-directories-first = true;
+    };
+  };
+
+  home.packages = with pkgs; [swaybg];
   wayland.windowManager.hyprland = {
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
@@ -147,11 +180,11 @@ in {
         "${lib.getExe pkgs.hyprdim}"
         (let
           connected = pkgs.writeShellScriptBin "connected.sh" ''
-            hyprctl dispatch moveworkspacetomonitor name:external monitor:desc:${projector}
-            pactl set-card-profile alsa_card.pci-0000_00_1f.3 output:hdmi-stereo
+            ${hyprctl} dispatch moveworkspacetomonitor name:external monitor:desc:${projector}
+            ${pactl} set-card-profile alsa_card.pci-0000_00_1f.3 output:hdmi-stereo
           '';
           disconnected = pkgs.writeShellScriptBin "disconnected.sh" ''
-            pactl set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo
+            ${pactl} set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo
           '';
         in "${lib.getExe pkgs.hyprland-monitor-attached} ${lib.getExe connected} ${lib.getExe disconnected}")
         "sleep 2; ${lib.getExe pkgs.swaybg} --mode fill --image ${./wallpapers/polar-bear.jpg}"
@@ -164,14 +197,6 @@ in {
         "r[1-10], monitor:eDP-1"
       ];
       bind = let
-        brightness = x: let
-          direction =
-            if x == "up"
-            then "A"
-            else if x == "down"
-            then "U"
-            else throw "up or down";
-        in "${pkgs.brillo}/bin/brillo -u 150000 -${direction} 2 -q";
       in
         [
           "$mainMod, F, fullscreen, 2"
@@ -179,8 +204,7 @@ in {
           "$mainMod, W, exec, $browser"
 
           "$mainMod, Q, killactive,"
-          "$mainMod, M, exit,"
-          "$mainMod, E, exec, $fileManager"
+          "$mainMod ALT, Q, exit,"
           "$mainMod, V, togglefloating,"
           "$mainMod, P, exec, $menu"
 
@@ -201,28 +225,20 @@ in {
           "$mainMod SHIFT, j, movewindow, d"
 
           # media keys (on F keys)
-          ",XF86MonBrightnessUp, exec, ${brightness "up"}"
-          ",XF86MonBrightnessDown, exec, ${brightness "down"}"
-          ",XF86AudioRaiseVolume, exec, ${pkgs.pw-volume}/bin/pw-volume change '+5%'"
-          ",XF86AudioLowerVolume, exec, ${pkgs.pw-volume}/bin/pw-volume change '-5%'"
-          ",XF86AudioMute, exec, ${pkgs.pw-volume}/bin/pw-volume mute toggle"
-          ",XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute"
+          ",XF86MonBrightnessUp, exec, ${brightness-up}"
+          ",XF86MonBrightnessDown, exec, ${brightness-down}"
+          ",XF86AudioRaiseVolume,  exec, ${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+          ",XF86AudioLowerVolume,  exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ",XF86AudioMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ",XF86AudioMicMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
           # other keys: XF86Display XF86WLAN XF86Tools XF86Bluetooth XF86Keyboard XF86Favorites
-          ", Print, exec, ${pkgs.grimblast}/bin/grimblast copy area"
+          ", Print, exec, ${lib.getExe pkgs.grimblast} --notify copy area"
 
           "$mainMod, e, workspace, external"
           "$mainMod SHIFT, e, movetoworkspace, external"
         ]
-        ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString (
-          if n == 0
-          then 10
-          else n
-        )}") [1 2 3 4 5 6 7 8 9 0]
-        ++ map (n: "$mainMod, ${toString n}, workspace, ${toString (
-          if n == 0
-          then 10
-          else n
-        )}") [1 2 3 4 5 6 7 8 9 0];
+        ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString (if-zero-than-10 n)}") [1 2 3 4 5 6 7 8 9 0]
+        ++ map (n: "$mainMod, ${toString n}, workspace, ${toString (if-zero-than-10 n)}") [1 2 3 4 5 6 7 8 9 0];
 
       bindm = [
         "bindm=$mainMod,mouse:272,movewindow"
@@ -239,9 +255,20 @@ in {
         opacity = "0.88";
       in [
         "suppressevent maximize, class:.*" # You'll probably like this.
-        "opacity ${opacity} override ${opacity} override 1.0 override, class:.*" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for all programs
         "opacity ${opacity} override ${opacity} override ${opacity} override, class:^(foot)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for foot
         "opacity ${opacity} override ${opacity} override ${opacity} override, class:^(kitty)$" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for kitty
+        "opacity ${opacity} override ${opacity} override 1.0 override, class:.*" # set opacity to ${opacity} active, ${opacity} inactive and ${opacity} fullscreen for all programs
+
+        "float,class:^(firefox)$,title:^(Firefox — Sharing Indicator)$"
+        "move 95% 50%,class:^(firefox)$,title:^(Firefox — Sharing Indicator)$"
+
+        "float,class:^(pavucontrol)$"
+        "size 50% 50%,class:^(pavucontrol)$"
+        "center,class:^(pavucontrol)$"
+
+        "float,class:^(nm-connection-editor)$"
+        "size 50% 50%,class:^(nm-connection-editor)$"
+        "center,class:^(nm-connection-editor)$"
       ];
     };
   };
