@@ -15,6 +15,7 @@ in {
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ./kanata.nix
+    ./stylix.nix
   ];
   nix.settings = {
     substituters = [

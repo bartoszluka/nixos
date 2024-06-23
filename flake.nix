@@ -27,6 +27,7 @@
 
     # Neovim
     nvim-nix.url = "path:/home/bartek/nvim.nix";
+    # neovim-nightly.url = "github:nix-community/neovim-nightly-overlay?ref=master";
 
     bibata-cursors = {
       url = "github:suchipi/Bibata_Cursor";
@@ -49,6 +50,10 @@
     #   url = "github:/hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
     # };
+    # hyprfocus = {
+    #   url = "github:pyt0xic/hyprfocus";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -56,6 +61,7 @@
     };
     ags.url = "github:Aylur/ags";
     feedback.url = "github:NorfairKing/feedback";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
@@ -88,6 +94,7 @@
             users."bartek" = import ./home.nix;
           };
         }
+        inputs.stylix.nixosModules.stylix
       ];
     };
   };

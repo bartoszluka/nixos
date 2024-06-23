@@ -203,7 +203,7 @@
         ".ignore:Git Ignore"
       ];
       pager = "less -FR";
-      theme = "Nord";
+      # theme = "Nord";
     };
   };
   programs.tealdeer = {
@@ -277,12 +277,12 @@
     enable = true;
     settings = with config.colorScheme.palette; {
       # prompt-color = #f38ba8
-      selection-color = "#${base0C}";
-      background-color = "#${base01}C0";
+      # selection-color = "#${base0C}";
+      # background-color = "#${base01}C0";
 
       # background-color = "#000A";
       border-width = 0;
-      font = "monospace";
+      # font = "monospace";
       height = "100%";
       num-results = 5;
       outline-width = 0;
@@ -294,7 +294,7 @@
       hide-cursor = true;
       history = true;
       fuzzy-match = true;
-      font-size = 24;
+      # font-size = lib.mkForce 24;
       terminal = "foot";
     };
   };

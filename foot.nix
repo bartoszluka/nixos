@@ -3,8 +3,8 @@
     enable = true;
     settings = {
       main = {
-        font = "JetBrainsMono NF:pixelsize=20";
-        dpi-aware = "yes";
+        # font = "JetBrainsMono NF:pixelsize=20";
+        # dpi-aware = "yes";
         selection-target = "both";
       };
       bell = {

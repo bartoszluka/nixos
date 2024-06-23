@@ -20,69 +20,103 @@
 in {
   programs.waybar.enable = true;
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    # x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 24;
-  };
-
-  gtk = let
-    extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-  in {
-    enable = true;
-    theme = {
-      package = pkgs.nordic;
-      name = "Nordic";
-    };
-
-    iconTheme = {
-      package = pkgs.nordzy-icon-theme;
-      name = "Nordzy";
-    };
-
-    font = {
-      name = "Lato";
-      package = pkgs.lato;
-      size = 15;
-    };
-    gtk2.extraConfig = ''
-      gtk-application-prefer-dark-theme = 1;
-    '';
-    gtk3.extraConfig = extraConfig;
-    gtk4.extraConfig = extraConfig;
-  };
-  xdg.configFile = let
-    gtkTheme = config.gtk.theme;
-  in {
-    "gtk-4.0/assets".source = "${gtkTheme.package}/share/themes/${gtkTheme.name}/gtk-4.0/assets";
-    "gtk-4.0/gtk.css".source = "${gtkTheme.package}/share/themes/${gtkTheme.name}/gtk-4.0/gtk.css";
-    "gtk-4.0/gtk-dark.css".source = "${gtkTheme.package}/share/themes/${gtkTheme.name}/gtk-4.0/gtk-dark.css";
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = ":appmenu";
-    };
-    "org/gtk/settings/file-chooser" = {
-      sort-directories-first = true;
-    };
-    "org/gtk/gtk4/settings/file-chooser" = {
-      sort-directories-first = true;
-    };
-  };
+  # home.pointerCursor = {
+  #   gtk.enable = true;
+  #   # x11.enable = true;
+  #   package = pkgs.bibata-cursors;
+  #   name = "Bibata-Modern-Ice";
+  #   size = 24;
+  # };
+  #
+  # gtk = let
+  #   extraConfig = {
+  #     gtk-application-prefer-dark-theme = true;
+  #   };
+  # in {
+  #   enable = true;
+  #   theme = {
+  #     package = pkgs.nordic;
+  #     name = "Nordic";
+  #   };
+  #
+  #   iconTheme = {
+  #     package = pkgs.nordzy-icon-theme;
+  #     name = "Nordzy";
+  #   };
+  #
+  #   font = {
+  #     name = "Lato";
+  #     package = pkgs.lato;
+  #     size = 15;
+  #   };
+  #   gtk2.extraConfig = ''
+  #     gtk-application-prefer-dark-theme = 1;
+  #   '';
+  #   gtk3.extraConfig = extraConfig;
+  #   gtk4.extraConfig = extraConfig;
+  # };
+  # xdg.configFile = let
+  #   gtkTheme = config.gtk.theme;
+  # in {
+  #   "gtk-4.0/assets".source = "${gtkTheme.package}/share/themes/${gtkTheme.name}/gtk-4.0/assets";
+  #   "gtk-4.0/gtk.css".source = "${gtkTheme.package}/share/themes/${gtkTheme.name}/gtk-4.0/gtk.css";
+  #   "gtk-4.0/gtk-dark.css".source = "${gtkTheme.package}/share/themes/${gtkTheme.name}/gtk-4.0/gtk-dark.css";
+  # };
+  #
+  # dconf.settings = {
+  #   "org/gnome/desktop/interface" = {
+  #     color-scheme = "prefer-dark";
+  #   };
+  #   "org/gnome/desktop/wm/preferences" = {
+  #     button-layout = ":appmenu";
+  #   };
+  #   "org/gtk/settings/file-chooser" = {
+  #     sort-directories-first = true;
+  #   };
+  #   "org/gtk/gtk4/settings/file-chooser" = {
+  #     sort-directories-first = true;
+  #   };
+  # };
 
   home.packages = with pkgs; [swaybg];
   wayland.windowManager.hyprland = {
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    plugins = [
+      # inputs.hyprfocus.packages."${pkgs.system}".hyprfocus
+    ];
     enable = true;
     settings = {
+      # "plugin:hyprfocus" = {
+      # enabled = "yes";
+      # animate_floating = true;
+      # animate_workspacechange = true;
+      # focus_animation = "flash";
+      # # Beziers for focus animations
+      # bezier = [
+      #   "bezIn, 0.5,0.0,1.0,0.5"
+      #   "bezOut, 0.0,0.5,0.5,1.0"
+      #   "overshot, 0.05, 0.9, 0.1, 1.05"
+      #   "smoothOut, 0.36, 0, 0.66, -0.56"
+      #   "smoothIn, 0.25, 1, 0.5, 1"
+      #   "realsmooth, 0.28,0.29,.69,1.08"
+      # ];
+      # # Flash settings
+      # flash = {
+      #   flash_opacity = 0.95;
+      #   in_bezier = "realsmooth";
+      #   in_speed = 0.5;
+      #   out_bezier = "realsmooth";
+      #   out_speed = 3;
+      # };
+      # # Shrink settings
+      # shrink = {
+      #   shrink_percentage = 0.95;
+      #   in_bezier = "realsmooth";
+      #   in_speed = 1;
+      #   out_bezier = "realsmooth";
+      #   out_speed = 2;
+      # };
+      # };
       general = {
         gaps_in = 5;
         gaps_out = 10;
@@ -95,8 +129,8 @@ in {
         ];
 
         # "col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
-        "col.active_border" = "rgb(${config.colorScheme.palette.base0E})";
-        "col.inactive_border" = "rgb(${config.colorScheme.palette.base00})";
+        # "col.active_border" = "rgb(${config.colorScheme.palette.base0E})";
+        # "col.inactive_border" = "rgb(${config.colorScheme.palette.base00})";
       };
       input = {
         kb_layout = "pl";
@@ -163,7 +197,7 @@ in {
 
       # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
       master = {
-        new_is_master = true;
+        new_status = "master";
         new_on_top = true;
       };
 
@@ -196,8 +230,7 @@ in {
         "name:external, monitor:desc:${projector}, default:true"
         "r[1-10], monitor:eDP-1"
       ];
-      bind = let
-      in
+      bind =
         [
           "$mainMod, F, fullscreen, 2"
           "$mainMod, return, exec, footclient"
