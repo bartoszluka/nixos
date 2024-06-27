@@ -1,13 +1,13 @@
 {
   pkgs,
-  config,
+  inputs,
   ...
 }: {
   stylix.enable = true;
   stylix.image = ./wallpapers/polar-bear.jpg;
   stylix.polarity = "dark";
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-  # stylix.base16Scheme = config.colorScheme.palette;
+  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+  stylix.base16Scheme = inputs.nix-colors.colorSchemes.nord;
   stylix.cursor.package = pkgs.bibata-cursors;
   stylix.cursor.name = "Bibata-Modern-Ice";
   stylix.cursor.size = 24;
@@ -28,7 +28,7 @@
     sizes = {
       applications = 14;
       terminal = 12;
-      desktop = 16;
+      desktop = 14;
       popups = 12;
     };
   };
