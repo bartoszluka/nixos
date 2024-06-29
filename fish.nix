@@ -2,7 +2,6 @@
   programs.fish = {
     enable = true;
     interactiveShellInit =
-      # fish
       ''
         set fish_greeting # Disable greeting
         # binds control+y to accept current suggestion
