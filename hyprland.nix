@@ -139,7 +139,7 @@ in {
           disable_while_typing = true;
         };
         touchdevice.enabled = false;
-        repeat_rate = 40;
+        repeat_rate = 30;
         repeat_delay = 250;
         force_no_accel = true;
         follow_mouse = 1;
