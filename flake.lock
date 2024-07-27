@@ -1609,8 +1609,8 @@
         "which-key": "which-key"
       },
       "locked": {
-        "lastModified": 1721403215,
-        "narHash": "sha256-Q7U8SEFL73R+1VF0BDzEjAbIZLPMc3NjCisnUX/n1XA=",
+        "lastModified": 1722070680,
+        "narHash": "sha256-D5m7tKDvjjCHAOF2dquMdcV9PMgdba7ya/UKYEQU8Bo=",
         "path": "/home/bartek/nvim.nix",
         "type": "path"
       },
