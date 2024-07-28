@@ -164,7 +164,7 @@ in {
 
   hardware.brillo.enable = true;
 
-  services.logind.lidSwitchExternalPower = "ignore";
+  services.logind.lidSwitchDocked = "ignore";
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
