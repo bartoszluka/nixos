@@ -211,7 +211,6 @@ in {
         "waybar"
         "mako"
         "foot --server"
-        "${lib.getExe pkgs.hyprdim}"
         (let
           connected = pkgs.writeShellScriptBin "connected.sh" ''
             ${hyprctl} dispatch moveworkspacetomonitor name:external monitor:desc:${projector}
