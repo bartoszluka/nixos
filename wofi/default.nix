@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{lib, ...}: {
   programs.wofi = {
     enable = true;
     settings = {
@@ -21,6 +21,6 @@
       gtk_dark = true;
     };
 
-    style = builtins.readFile ./style.css;
+    style = lib.mkDefault (builtins.readFile ./style.css);
   };
 }

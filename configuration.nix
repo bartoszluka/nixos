@@ -5,7 +5,6 @@
   pkgs,
   inputs,
   lib,
-  unstable,
   ...
 }: let
   hyprland = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -135,8 +134,6 @@ in {
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  sound.enable = true;
   # hardware.pulseaudio.enable = true;
   services.pipewire = {
     enable = true;
@@ -157,7 +154,6 @@ in {
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
-    driSupport = true;
   };
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   xdg.portal.enable = true;
@@ -169,7 +165,8 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  nixpkgs.overlays = [inputs.nvim-nix.overlays.default];
+  nixpkgs.overlays = [inputs.nvim-nix.overlays.default inputs.mozilla.overlays.firefox];
+  programs.firefox.package = pkgs.latest.firefox-nightly-bin;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.bartek = {
@@ -195,7 +192,6 @@ in {
     bat
     kitty
     foot
-    firefox
     vivaldi # this is from unfree
     git
     du-dust

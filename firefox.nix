@@ -5,7 +5,6 @@
 }: {
   programs.firefox = {
     enable = true;
-    # package = pkgs.firefox-devedition;
     nativeMessagingHosts = [
       # Gnome shell native connector
       pkgs.gnome-browser-connector
@@ -195,7 +194,7 @@
         # facebook-container
         # firefox-translations
         # floccus # Sync your bookmarks and tabs across browsers via Nextcloud, any WebDAV service, any Git service, via a local file, via Google Drive.
-        sidebartabs
+        # sidebartabs
         libredirect
         lovely-forks
         refined-github

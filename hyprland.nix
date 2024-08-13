@@ -82,12 +82,13 @@ in {
   wayland.windowManager.hyprland = {
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     plugins = [
-      # inputs.hyprfocus.packages."${pkgs.system}".hyprfocus
+      inputs.hyprfocus.packages."${pkgs.system}".hyprfocus
     ];
     enable = true;
     settings = {
-      # "plugin:hyprfocus" = {
-      # enabled = "yes";
+      "plugin:hyprfocus" = {
+        enabled = "yes";
+      };
       # animate_floating = true;
       # animate_workspacechange = true;
       # focus_animation = "flash";

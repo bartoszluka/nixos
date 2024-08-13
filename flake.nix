@@ -2,8 +2,8 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpgks-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware/master";
     hyprland = {
       type = "git";
@@ -23,10 +23,13 @@
 
     # Run unpatched dynamically compiled binaries
     nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "unstable";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
     # Neovim
-    nvim-nix.url = "path:/home/bartek/nvim.nix";
+    nvim-nix = {
+      url = "path:/home/bartek/nvim.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # neovim-nightly.url = "github:nix-community/neovim-nightly-overlay?ref=master";
 
     bibata-cursors = {
@@ -50,18 +53,21 @@
     #   url = "github:/hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
     # };
-    # hyprfocus = {
-    #   url = "github:pyt0xic/hyprfocus";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
+    hyprfocus = {
+      url = "github:pyt0xic/hyprfocus";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     ags.url = "github:Aylur/ags";
     feedback.url = "github:NorfairKing/feedback";
     stylix.url = "github:danth/stylix";
+    mozilla = {
+      url = "github:mozilla/nixpkgs-mozilla";
+    };
   };
 
   outputs = {
@@ -72,10 +78,11 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    unstable = import inputs.unstable {system = system;};
+    stable-24-05 = import inputs.stable-24-05 {system = system;};
+    pkgs = import nixpkgs {system = system;};
   in {
     nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs unstable;};
+      specialArgs = {inherit inputs stable-24-05;};
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-t470s
         ./configuration.nix
