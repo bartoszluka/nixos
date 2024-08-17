@@ -156,6 +156,7 @@ in {
     enable = true;
     enable32Bit = true;
   };
+  xdg.portal.configPackages = [pkgs.xdg-desktop-portal-gtk];
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   xdg.portal.enable = true;
 
