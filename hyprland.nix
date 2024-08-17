@@ -224,7 +224,7 @@ in {
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
       ];
-      "$browser" = "firefox";
+      "$browser" = "${lib.getExe config.programs.firefox.package}";
       workspace = [
         "name:external, monitor:desc:${projector}, default:true"
         "r[1-10], monitor:eDP-1"

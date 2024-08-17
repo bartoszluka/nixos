@@ -256,6 +256,10 @@ in {
         // user_pref("browser.tabs.drawInTitlebar", true);
         user_pref("extensions.autoDisableScopes", 0);
         user_pref("extensions.enabledScopes", 15);
+
+        // enable sidebar and sidebar tabs
+        user_pref("sidebar.revamp", true);
+        user_pref("sidebar.verticalTabs", true);
       '';
 
       userChrome = ''
