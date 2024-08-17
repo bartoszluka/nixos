@@ -65,9 +65,7 @@
     ags.url = "github:Aylur/ags";
     feedback.url = "github:NorfairKing/feedback";
     stylix.url = "github:danth/stylix";
-    mozilla = {
-      url = "github:mozilla/nixpkgs-mozilla";
-    };
+    firefox-nightly.url = "github:nix-community/flake-firefox-nightly";
   };
 
   outputs = {
@@ -79,7 +77,6 @@
   } @ inputs: let
     system = "x86_64-linux";
     stable-24-05 = import inputs.stable-24-05 {system = system;};
-    pkgs = import nixpkgs {system = system;};
   in {
     nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs stable-24-05;};

@@ -8,6 +8,7 @@
   ...
 }: let
   hyprland = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  firefox-nightly = inputs.firefox-nightly.packages."${pkgs.system}".firefox-nightly-bin;
 in {
   imports = [
     # Include the results of the hardware scan.
@@ -165,8 +166,8 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  nixpkgs.overlays = [inputs.nvim-nix.overlays.default inputs.mozilla.overlays.firefox];
-  programs.firefox.package = pkgs.latest.firefox-nightly-bin;
+  nixpkgs.overlays = [inputs.nvim-nix.overlays.default];
+  programs.firefox.package = firefox-nightly;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.bartek = {

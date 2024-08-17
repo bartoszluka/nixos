@@ -2,9 +2,12 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  firefox-nightly = inputs.firefox-nightly.packages."${pkgs.system}".firefox-nightly-bin;
+in {
   programs.firefox = {
     enable = true;
+    package = firefox-nightly;
     nativeMessagingHosts = [
       # Gnome shell native connector
       pkgs.gnome-browser-connector
