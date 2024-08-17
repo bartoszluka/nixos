@@ -263,6 +263,7 @@ in {
       '';
 
       userChrome = ''
+        #TabsToolbar {visibility: collapse;}
         @import "firefox-nordic-theme/userChrome.css";
       '';
 
