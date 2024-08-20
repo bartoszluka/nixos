@@ -202,6 +202,7 @@ in {
         lovely-forks
         refined-github
         unwanted-twitch
+        new-tab-override
       ];
       search.default = "searx";
       search.engines = {
