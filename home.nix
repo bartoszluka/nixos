@@ -60,6 +60,15 @@
       };
     };
   };
+  programs.freetube = {
+    enable = true;
+    settings = {
+      baseTheme = "nordic";
+      mainColor = "DraculaCyan";
+      secColor = "CatppuccinMochaMauve";
+    };
+  };
+
   services.udiskie.enable = true;
 
   home.sessionVariables = {
