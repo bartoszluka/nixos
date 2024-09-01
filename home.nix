@@ -15,6 +15,7 @@
     ./wofi
     ./rnnoise.nix
     ./bitwarden.nix
+    ./nixcord.nix
     ./mako.nix
     ./bottom.nix
     ./qutebrowser.nix
@@ -117,7 +118,6 @@
     pavucontrol
     signal-desktop
     lazygit
-    armcord
   ];
 
   programs.fish = {

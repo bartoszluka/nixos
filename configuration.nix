@@ -218,6 +218,7 @@ in {
     builtins.elem (lib.getName pkg) [
       # Add additional package names here
       "vivaldi"
+      "discord"
     ];
 
   programs.fish.enable = true;
