@@ -135,13 +135,17 @@ in {
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # hardware.pulseaudio.enable = true;
   services.pipewire = {
+    audio.enable = true;
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
-    pulse.enable = true;
+    wireplumber.enable = true;
+    # pulse.enable = true;
   };
+
+  # for noise canceling
+  programs.noisetorch.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.settings = {

@@ -13,7 +13,6 @@
     ./foot.nix
     ./firefox.nix
     ./wofi
-    ./rnnoise.nix
     ./bitwarden.nix
     ./nixcord.nix
     ./mako.nix
