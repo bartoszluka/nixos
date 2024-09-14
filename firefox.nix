@@ -268,6 +268,7 @@ in {
       '';
 
       settings = {
+        "browser.tabs.closeWindowWithLastTab" = false;
         "apz.doubletapzoom.defaultzoomin" = 1.2; # default zoom value
         "browser.aboutwelcome.enabled" = false;
         "browser.meta_refresh_when_inactive.disabled" = true;
