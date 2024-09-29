@@ -220,7 +220,7 @@ in {
             ${pactl} set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo+input:analog-stereo
           '';
         in "${lib.getExe pkgs.hyprland-monitor-attached} ${lib.getExe connected} ${lib.getExe disconnected}")
-        "sleep 2; ${lib.getExe pkgs.swaybg} --mode fill --image ${./wallpapers/polar-bear.jpg}"
+        "sleep 2; ${lib.getExe pkgs.swaybg} --mode fill --image ${./wallpapers/nord-ign_sunset_valley.png}"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
       ];
