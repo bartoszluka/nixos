@@ -46,6 +46,8 @@ in {
     };
   };
 
+  hardware.keyboard.qmk.enable = true;
+
   # nixpkgs.config.allowUnfree = true;
 
   programs.nh = {
@@ -212,7 +214,7 @@ in {
     swayimg
     imv
     inputs.feedback.packages.${system}.default
-    hyprdim # temporarily dim inactive windows
+    qmk
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
