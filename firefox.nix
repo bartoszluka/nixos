@@ -208,7 +208,7 @@ in {
         "searx" = {
           urls = [
             {
-              template = "https://searx.jaimo.fun/search";
+              template = "https://searx.bluka.dev/search";
               params = [
                 {
                   name = "q";
@@ -281,7 +281,7 @@ in {
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.shell.defaultBrowserCheckCount" = 1;
-        "browser.startup.homepage" = "https://searx.jaimo.fun";
+        "browser.startup.homepage" = "https://searx.bluka.dev";
 
         "app.shield.optoutstudies.enabled" = false;
         "content.notify.interval" = 100000;
