@@ -2196,11 +2196,12 @@
         "scratch": "scratch",
         "scrollEOF": "scrollEOF",
         "smart-open": "smart-open",
+        "tree-pairs": "tree-pairs",
         "which-key": "which-key"
       },
       "locked": {
-        "lastModified": 1727612020,
-        "narHash": "sha256-GJffpDMtN/ALidFTpQpFn/inhIoq4XmJelLcIqGR6fs=",
+        "lastModified": 1728504515,
+        "narHash": "sha256-pEQNHoUUwte/axFXHJbMmRGzxr4+g3UJ+wHpkAZeeio=",
         "path": "/home/bartek/nvim.nix",
         "type": "path"
       },
@@ -2484,6 +2485,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tree-pairs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715122816,
+        "narHash": "sha256-fb4EsrWAbm8+dWAhiirCPuR44MEg+KYb9hZOIuEuT24=",
+        "owner": "yorickpeterse",
+        "repo": "nvim-tree-pairs",
+        "rev": "e7f7b6cc28dda6f3fa271ce63b0d371d5b7641da",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yorickpeterse",
+        "repo": "nvim-tree-pairs",
         "type": "github"
       }
     },
