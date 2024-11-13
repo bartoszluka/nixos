@@ -66,7 +66,7 @@
     feedback.url = "github:NorfairKing/feedback";
     stylix.url = "github:danth/stylix";
     firefox-nightly.url = "github:nix-community/flake-firefox-nightly";
-    nixcord.url = "github:kaylorben/nixcord";
+    # nixcord.url = "github:kaylorben/nixcord";
   };
 
   outputs = {
@@ -96,7 +96,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             sharedModules = [
-              inputs.nixcord.homeManagerModules.nixcord
+              # inputs.nixcord.homeManagerModules.nixcord
             ];
             users."bartek" = import ./home.nix;
           };

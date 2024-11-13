@@ -28,12 +28,12 @@ in {
     ];
   };
   programs.dconf.enable = true; # fix for home manager error with gtk apps
-  services.greetd = {
+  services.greetd = rec {
     enable = true;
     package = pkgs.greetd.tuigreet;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --asterisks --cmd ${hyprland}/bin/hyprland";
+        command = "${lib.getExe package} --remember --time --asterisks --cmd ${lib.getExe hyprland}";
       };
     };
   };
@@ -220,7 +220,7 @@ in {
     builtins.elem (lib.getName pkg) [
       # Add additional package names here
       "vivaldi"
-      "discord"
+      # "discord"
     ];
 
   programs.fish.enable = true;

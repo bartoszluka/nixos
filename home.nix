@@ -14,7 +14,6 @@
     ./firefox.nix
     ./wofi
     ./bitwarden.nix
-    ./nixcord.nix
     ./mako.nix
     ./bottom.nix
     ./qutebrowser.nix
@@ -32,6 +31,10 @@
   qt.platformTheme.name = "gtk3";
   qt.style.name = "adwaita-dark";
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
   programs.fd = {
     enable = true;
     ignores = [".git/" "node_modules/"];
