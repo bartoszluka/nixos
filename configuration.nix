@@ -52,7 +52,10 @@ in {
 
   programs.nh = {
     enable = true;
-    clean.dates = "weekly";
+    clean = {
+      dates = "weekly";
+      enable = true;
+    };
     flake = /home/bartek/nixos;
   };
   # Use the GRUB 2 boot loader.
@@ -96,7 +99,11 @@ in {
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   fonts.packages = with pkgs; [
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode" "0xProto"];})
+    # pkgs.nerd-fonts.jetbrains-mono
+    # pkgs.nerd-fonts._0xproto
+    # pkgs.nerd-fonts.iosevka
+    # pkgs.nerd-fonts.fira-code
     cm_unicode
     rubik
     lato
@@ -169,7 +176,7 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  nixpkgs.overlays = [inputs.nvim-nix.overlays.default];
+  # nixpkgs.overlays = [inputs.nvim-nix.overlays.default];
   programs.firefox.package = firefox-nightly;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -177,13 +184,13 @@ in {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "input" "video"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      nvim-pkg # my custom neovim flake
+      # nvim-pkg # my custom neovim flake
     ];
     shell = pkgs.fish;
   };
 
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     # unstable.neovim
     fd
@@ -214,6 +221,7 @@ in {
     swayimg
     imv
     inputs.feedback.packages.${system}.default
+    inputs.nvim-nix.packages.${system}.default
     qmk
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:

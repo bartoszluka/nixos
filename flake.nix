@@ -2,13 +2,17 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpgks-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware/master";
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
       submodules = true;
+    };
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # plusultra = {
@@ -27,8 +31,9 @@
 
     # Neovim
     nvim-nix = {
-      url = "path:/home/bartek/nvim.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # url = "path:${/home/bartek/nvim.nix}";
+      url = "github:bartoszluka/nvim.nix/switch-to-nixcats";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     # neovim-nightly.url = "github:nix-community/neovim-nightly-overlay?ref=master";
 
@@ -80,7 +85,10 @@
     stable-24-05 = import inputs.stable-24-05 {system = system;};
   in {
     nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs stable-24-05;};
+      specialArgs = {
+        inherit system;
+        inherit inputs;
+      };
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-t470s
         ./configuration.nix
@@ -102,6 +110,7 @@
           };
         }
         inputs.stylix.nixosModules.stylix
+        {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
       ];
     };
   };

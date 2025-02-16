@@ -164,7 +164,9 @@ in {
           passes = 1;
           xray = true; # if enabled, floating windows will ignore tiled windows in their blur. Only available if blur_new_optimizations is true. Will reduce overhead on floating blur significantly.
         };
-        drop_shadow = false;
+        shadow = {
+          enabled = false;
+        };
       };
       animations = {
         enabled = true;
