@@ -8,13 +8,13 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
     ./hyprland.nix
-    ./waybar
+    # ./waybar
     ./fish.nix
     ./foot.nix
     ./firefox.nix
     ./wofi
     ./bitwarden.nix
-    ./mako.nix
+    # ./mako.nix
     ./bottom.nix
     ./qutebrowser.nix
     # inputs.ags.homeManagerModules.default

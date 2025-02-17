@@ -4,7 +4,7 @@
   ...
 }: {
   stylix.enable = true;
-  stylix.image = ./wallpapers/polar-bear.jpg;
+  stylix.image = ./wallpapers/nord-ign_sunset_valley.png;
   stylix.polarity = "dark";
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
   stylix.base16Scheme = inputs.nix-colors.colorSchemes.nord;

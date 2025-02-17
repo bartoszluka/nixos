@@ -37,7 +37,7 @@
     layout = {
       "bar.layouts" = {
         "0" = {
-          left = ["dashboard" "power" "workspaces" "windowtitle"];
+          left = ["workspaces" "windowtitle"];
           middle = ["clock"];
           right = ["battery" "volume" "bluetooth" "hyprsunset" "systray"];
         };
@@ -51,24 +51,34 @@
     # Default: <same as gui>
     settings = {
       bar.launcher.autoDetectIcon = true;
-      bar.workspaces.show_icons = true;
+      bar.workspaces = {
+        show_icons = true;
+        showApplicationIcons = true;
+        showWsIcons = true;
+        show_numbered = true;
+      };
+      bar.clock.format = "%a %d %b %H:%M";
 
+      menus.transitionTime = 100;
       menus.clock = {
         time = {
           military = true;
-          hideSeconds = true;
+          hideSeconds = false;
         };
-        weather.unit = "metric";
+        weather.enabled = false;
       };
+      menus.power.lowBatteryNotification = true;
+      menus.power.lowBatteryThreshold = 10;
 
       menus.dashboard.directories.enabled = false;
-      menus.dashboard.stats.enable_gpu = true;
-
-      theme.bar.transparent = true;
-
+      menus.dashboard.stats.enable_gpu = false;
+      theme.bar = {
+        transparent = false;
+      };
       theme.font = {
-        # name = "CaskaydiaCove NF";
-        # size = "16px";
+        name = "Lato";
+        # size = "14px";
+        size = "1rem";
       };
     };
   };
