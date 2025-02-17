@@ -30,8 +30,6 @@
   colorScheme = inputs.nix-colors.colorSchemes.nord;
 
   qt.enable = true;
-  qt.platformTheme.name = "gtk3";
-  qt.style.name = "adwaita-dark";
 
   programs.direnv = {
     enable = true;
@@ -75,10 +73,6 @@
   };
 
   services.udiskie.enable = true;
-
-  home.sessionVariables = {
-    QT_STYLE_OVERRIDE = "adwaita-dark";
-  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
