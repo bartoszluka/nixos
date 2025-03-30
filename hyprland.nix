@@ -18,7 +18,7 @@
     then 10
     else n;
 in {
-  programs.waybar.enable = true;
+  # programs.waybar.enable = true;
 
   # home.pointerCursor = {
   #   gtk.enable = true;
@@ -210,8 +210,8 @@ in {
       exec-once = [
         "nm-applet"
         "blueman-applet"
-        "waybar"
-        "mako"
+        # "waybar"
+        # "mako"
         "foot --server"
         (let
           connected = pkgs.writeShellScriptBin "connected.sh" ''
@@ -222,7 +222,6 @@ in {
             ${pactl} set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo+input:analog-stereo
           '';
         in "${lib.getExe pkgs.hyprland-monitor-attached} ${lib.getExe connected} ${lib.getExe disconnected}")
-        "sleep 2; ${lib.getExe pkgs.swaybg} --mode fill --image ${./wallpapers/nord-ign_sunset_valley.png}"
         "[workspace 10 silent] foot -e btm"
         "[workspace 2 silent] $browser"
       ];

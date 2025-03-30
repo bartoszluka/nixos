@@ -98,7 +98,7 @@
     # '')
     wl-clipboard
     eww
-    swww
+    # swww
     networkmanagerapplet
     wofi
     zoxide
