@@ -18,7 +18,7 @@
     then 10
     else n;
 in {
-  # programs.waybar.enable = true;
+  programs.waybar.enable = true;
 
   # home.pointerCursor = {
   #   gtk.enable = true;
@@ -210,8 +210,8 @@ in {
       exec-once = [
         "nm-applet"
         "blueman-applet"
-        # "waybar"
-        # "mako"
+        "waybar"
+        "mako"
         "foot --server"
         (let
           connected = pkgs.writeShellScriptBin "connected.sh" ''

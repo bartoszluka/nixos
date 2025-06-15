@@ -8,20 +8,20 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
     ./hyprland.nix
-    # ./waybar
+    ./waybar
     ./fish.nix
     ./foot.nix
     ./firefox.nix
     ./wofi
     ./bitwarden.nix
-    # ./mako.nix
+    ./mako.nix
     ./bottom.nix
     ./qutebrowser.nix
     # inputs.ags.homeManagerModules.default
     # ./ags
     ./yazi.nix
-    inputs.hyprpanel.homeManagerModules.hyprpanel
-    ./hyprpanel.nix
+    # inputs.hyprpanel.homeManagerModules.hyprpanel
+    # ./hyprpanel.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
