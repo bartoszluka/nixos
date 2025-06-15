@@ -26,6 +26,12 @@ in {
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
+    binaryCachePublicKeys = [
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+    ];
+    binaryCaches = [
+      "https://cache.iog.io"
+    ];
   };
   programs.dconf.enable = true; # fix for home manager error with gtk apps
   services.greetd = rec {
@@ -38,13 +44,13 @@ in {
     };
   };
   security.polkit.enable = true;
-  services.fprintd = {
-    enable = true;
-    tod = {
-      enable = true;
-      driver = pkgs.libfprint-2-tod1-vfs0090;
-    };
-  };
+  # services.fprintd = {
+  #   enable = true;
+  #   tod = {
+  #     enable = true;
+  #     driver = pkgs.libfprint-2-tod1-vfs0090;
+  #   };
+  # };
 
   hardware.keyboard.qmk.enable = true;
 
@@ -99,11 +105,11 @@ in {
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   fonts.packages = with pkgs; [
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode" "0xProto"];})
-    # pkgs.nerd-fonts.jetbrains-mono
-    # pkgs.nerd-fonts._0xproto
-    # pkgs.nerd-fonts.iosevka
-    # pkgs.nerd-fonts.fira-code
+    # (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode" "0xProto"];})
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nerd-fonts._0xproto
+    pkgs.nerd-fonts.iosevka
+    pkgs.nerd-fonts.fira-code
     cm_unicode
     rubik
     lato

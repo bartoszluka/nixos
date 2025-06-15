@@ -59,7 +59,7 @@
     #   inputs.hyprland.follows = "hyprland";
     # };
     hyprfocus = {
-      url = "github:pyt0xic/hyprfocus";
+      url = "github:the-pint-sized-powerhouse/hyprfocus";
       inputs.hyprland.follows = "hyprland";
     };
 
