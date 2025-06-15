@@ -21,16 +21,12 @@ in {
     substituters = [
       "https://hyprland.cachix.org"
       "https://cache.garnix.io"
+      "https://cache.iog.io"
     ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-    ];
-    binaryCachePublicKeys = [
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-    ];
-    binaryCaches = [
-      "https://cache.iog.io"
     ];
   };
   programs.dconf.enable = true; # fix for home manager error with gtk apps
@@ -62,7 +58,7 @@ in {
       dates = "weekly";
       enable = true;
     };
-    flake = /home/bartek/nixos;
+    flake = "${./.}";
   };
   # Use the GRUB 2 boot loader.
   # boot.loader.grub.enable = true;

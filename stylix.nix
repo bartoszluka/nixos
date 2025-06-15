@@ -11,7 +11,9 @@
   stylix.cursor.package = pkgs.bibata-cursors;
   stylix.cursor.name = "Bibata-Modern-Ice";
   stylix.cursor.size = 24;
-
+  # this doesn't work
+  # evaluation warning: bartek profile: stylix: firefox: `config.stylix.targets.firefox.profileNames` is not set. Declare profile names with 'config.stylix.targets.firefox.profileNames = [ "<PROFILE_NAME>" ];'.
+  # stylix.targets.firefox.profileNames = ["bartek"];
   stylix.fonts = {
     monospace = {
       # package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};

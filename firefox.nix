@@ -185,7 +185,7 @@ in {
       isDefault = true;
       containersForce = true;
 
-      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+      extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
         bitwarden
         ublock-origin
         darkreader
@@ -218,7 +218,7 @@ in {
             }
           ];
 
-          iconUpdateURL = "https://docs.searxng.org/_static/searxng-wordmark.svg";
+          icon = "https://docs.searxng.org/_static/searxng-wordmark.svg";
           definedAliases = ["sx"];
         };
         "Nix Packages" = {
